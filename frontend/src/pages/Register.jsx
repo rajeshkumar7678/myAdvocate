@@ -1,10 +1,18 @@
 import React from "react";
-
+import "../Components/Register.css"
 
 
 const Register = ()=>{
 
-    return  <div>
+    return  <div className="main-div">
+
+      <div className="image-div">
+
+      </div>
+
+      <div className="form-div">
+      <h1>Register</h1>
+
   
     <form  action="">
 
@@ -23,7 +31,7 @@ const Register = ()=>{
                   </fieldset>
                       <fieldset>
                          <legend>click on submit</legend>
-                         <input  id="submit" type="submit" value="Sign In"/>
+                         <input  id="submit" type="submit" value="Sign Up"/>
                       </fieldset>
 
                      
@@ -31,6 +39,8 @@ const Register = ()=>{
 
     
     </form>
+
+    </div>
     
     </div>;
 
