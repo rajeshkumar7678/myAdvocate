@@ -21,7 +21,7 @@ lawyerRouter.get('/', async (req, res) => {
     const users = await LawyerModel.find()
     res.send(users)
 })
-
+//to catch the id of img
 lawyerRouter.get('/:id', async (req, res) => {
     const _id = req.params.id;
     // console.log(_id);
