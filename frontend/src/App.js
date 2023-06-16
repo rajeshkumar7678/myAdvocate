@@ -9,25 +9,32 @@ import Lawyers from './pages/lawyer/lawyer';
 import Register from './pages/Register';
 import Login from './pages/Login';
 
+import Lawyers from './pages/lawyer/lawyer';
+import Form from './pages/Appointment/form';
+
+
 function App() {
   return (
     <div className="App">
 
       
 
-      <Router>
-       <Routes>
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/lawyers" element={<Lawyers />} />
+{/* <BrowserRouter>  */}
 
-      </Routes>
-     </Router>
-     
-      <Navbar />
-      <Register />
+     <Routes>
+    <Route path="/register" element={<Register />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/lawyers" element={<Lawyers />} />
+    <Route path="/form/:id" element={<Form />} />
 
-    </div>
+    </Routes>
+  
+   {/* </BrowserRouter> */}
+    {/* <Navbar />
+    <Register /> */}
+
+  </div>
+
   );
 }
 

@@ -22,6 +22,13 @@ lawyerRouter.get('/', async (req, res) => {
     res.send(users)
 })
 
+lawyerRouter.get('/:id', async (req, res) => {
+    const _id = req.params.id;
+    // console.log(_id);
+    const users = await LawyerModel.find({_id})
+    res.send(users)
+
+})
 // U -> Update
 lawyerRouter.patch('/update/:id', async (req, res) => {
     try {

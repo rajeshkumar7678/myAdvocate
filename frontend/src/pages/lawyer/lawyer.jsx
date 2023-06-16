@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import LawyerCard from "../../Components/lawyer/LawyerCard";
+
+import LawyerFilterer from "../../Components/lawyer/lawyerfilter";
+import SearchBar from "../../Components/lawyer/searchbar";
+// import Form from "../Appointment/form";
+
+
 import "./lawyer.css";
 const Lawyers = () => {
   const [query, setQuery] = useState("");
@@ -12,7 +18,7 @@ const Lawyers = () => {
 
     let data = await response.json();
     setItems(data);
-    
+
     setLoading(false);
   }
   console.log(items)
@@ -24,8 +30,17 @@ const Lawyers = () => {
   return (
     <div>
       <div className="search-div">
+
+        <SearchBar query={query} setQuery={setQuery} setOption={setOption} />
       </div>
       <div className="LawyerArea">
+        {/* <LawyerFilterer /> */}
+      </div>
+
+
+
+      <div>
+
         {(
           <div className="lawyer-list">
             {items?.map((el, index) => {
@@ -36,11 +51,17 @@ const Lawyers = () => {
               )
             })}
           </div>
-        ) 
-        
-          
-        }
+
+        )}
       </div>
+
+
+
+
+
+
+
+
     </div>
   );
 };
