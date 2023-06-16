@@ -1,7 +1,9 @@
 import React from "react";
 import "./lawyerCard.css";
+
 import { Link } from "react-router-dom"
 const LawyerCard = ({ name, image, bio, profession, experience, address, skills, languages, _id }) => {
+
 
 
   function returnStar(bum) {
@@ -13,6 +15,7 @@ const LawyerCard = ({ name, image, bio, profession, experience, address, skills,
   }
 
   return (
+
     <div className="card">
       <div className="name-div">
         <h1>{name}</h1>
@@ -34,6 +37,7 @@ const LawyerCard = ({ name, image, bio, profession, experience, address, skills,
       <Link to={`/form/${_id}`}> <button className="btn"> Book an Appointment</button> </Link>
        
     </div>
+
 
 
   );
