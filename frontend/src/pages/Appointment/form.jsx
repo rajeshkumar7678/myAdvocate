@@ -1,25 +1,47 @@
-import React from "react";
-import { useState } from "react";
+// import React from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import "./form.css";
 
+
+
+
 const Form = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    phone: '',
-    case: '',
-  });
+  const [imageUrl, setImageUrl] = useState(null);
+  const { id } = useParams();
+  console.log(id);
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await axios.get(`http://localhost:4500/lawyer/${id}`);
+        // console.log(response.data);
+        setImageUrl(response.data[0].image);
+      } catch (error) {
+        console.log('Error fetching image:', error);
+      }
+    };
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    fetchImage();
+  }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-  };
+  // const [formData, setFormData] = useState({
+  //   name: '',
+  //   email: '',
+  //   message: '',
+  //   phone: '',
+  //   case: '',
+  // });
+
+  // const handleInputChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle form submission logic here
+  //   console.log(formData);
+  // };
 
   return (
     // <form onSubmit={handleSubmit} className="form">
@@ -61,7 +83,15 @@ const Form = () => {
     //   <button type="submit">Submit</button>
     // </form>
     <div className="main-form">
-      <div><img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/567.jpg" alt="" /></div>
+      <div>
+        {imageUrl ? (
+          <img src={imageUrl} alt="Image" />
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </div>
+
+
       <div className="form">
         <form>
           <div class="mb-3">

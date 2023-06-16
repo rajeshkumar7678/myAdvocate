@@ -34,10 +34,15 @@
 .btn {
   width: 30%;
   height: 50px;
-  color: white;
-  border: none !important;
+  color: rgb(0, 0, 0);
+  border:2px solid black;
   border-radius: 34px;
-  background-color: #000000;
+  background-color: #ffffff;
+}
+.btn:hover{
+  color: rgb(255, 255, 255) ;
+  background-color:rgb(0, 0, 0);
+
 }
 
 .card:hover {

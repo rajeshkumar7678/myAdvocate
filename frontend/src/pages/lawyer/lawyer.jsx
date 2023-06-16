@@ -28,35 +28,33 @@ const Lawyers = () => {
   return (
     <div>
       <div className="search-div">
-        {/* <SearchBar query={query} setQuery={setQuery} setOption={setOption} /> */}
+        <SearchBar query={query} setQuery={setQuery} setOption={setOption} />
       </div>
       <div className="LawyerArea">
-        <LawyerFilterer />
+        {/* <LawyerFilterer /> */}
       </div>
 
-      <div className="final">
-
-        <div>
-          {(
-            <div className="lawyer-list">
-              {items?.map((el, index) => {
-                return (
-                  <div key={index + "4iop89721"}>
-                    <LawyerCard key={index + "7897546"}{...el} />
-                  </div>
-                )
-              })}
-            </div>
-          )}
-        </div>
 
 
-        <div>
-          {/* <Form /> */}
-        </div>
-
-
+      <div>
+        {(
+          <div className="lawyer-list">
+            {items?.map((el, index) => {
+              return (
+                <div key={index + "4iop89721"}>
+                  <LawyerCard key={index + "7897546"}{...el} />
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
+
+
+
+
+
+
 
     </div>
   );
