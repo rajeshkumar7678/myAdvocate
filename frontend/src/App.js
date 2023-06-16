@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
 
 import Navbar from './Components/Navbar';
+import Lawyers from './pages/lawyer/lawyer';
 
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -18,6 +19,8 @@ function App() {
        <Routes>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/lawyers" element={<Lawyers />} />
+
       </Routes>
      </Router>
      
