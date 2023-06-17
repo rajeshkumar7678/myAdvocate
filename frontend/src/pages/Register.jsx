@@ -35,7 +35,7 @@ const Register = ()=>{
                       </fieldset>
 
                      
-                      <button id="log-n"> <a href="./login.html">Existing User? login </a></button>
+                      <button id="log-n"> <a href="./login">Existing User? login </a></button>
 
     
     </form>
