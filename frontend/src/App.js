@@ -1,24 +1,41 @@
-import React from "react";
-import Home from "./pages/home";
-import { Route, Routes } from "react-router";
-import Navbar from "./Components/Navbar";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
-// import Service from "./pages/Service";
-// import Error from "./pages/Error";
+// import logo from './logo.svg';
+import './App.css';
+
+import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+
+import Navbar from './Components/Navbar';
+
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Lawyers from './pages/lawyer/lawyer';
+import Form from './pages/Appointment/form';
+import Userdesh from './pages/Userdeshboard/userdesh';
+
 
 const App = () => {
   return (
-    <>
-      <Routes>
-        <Route  path="/" element={<Home/>}></Route>
-        {/* <Route path="/about" component={<About/>}></Route>
-        <Route path="/contact" component={<con/>}></Route> */}
-        {/* <Route path="/service" component={Service}></Route> */}
-        {/* <Route component={Error}></Route> */}
-      </Routes>
-    </>
-    // <Navbar/>
+    <div className="App">
+
+      
+
+{/* <BrowserRouter>  */}
+
+     <Routes>
+    <Route path="/register" element={<Register />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/lawyers" element={<Lawyers />} />
+    <Route path="/form/:id" element={<Form />} />
+    <Route path="/userdesh" element={<Userdesh />} />
+
+
+    </Routes>
+  
+   {/* </BrowserRouter> */}
+    {/* <Navbar />
+    <Register /> */}
+
+  </div>
+
   );
 };
 
