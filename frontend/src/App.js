@@ -12,7 +12,7 @@ import Form from './pages/Appointment/form';
 import Userdesh from './pages/Userdeshboard/userdesh';
 
 
-function App() {
+const App = () => {
   return (
     <div className="App">
 
@@ -39,6 +39,6 @@ function App() {
 
 
   );
-}
+};
 
 export default App;
