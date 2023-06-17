@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes,Route, BrowserRouter} from "react-router-dom";
 
 import Navbar from './Components/Navbar';
 import Lawyers from './pages/lawyer/lawyer';
@@ -13,8 +13,9 @@ function App() {
   return (
     <div className="App">
 
-      
+<Navbar />
 
+    <BrowserRouter>
       <Router>
        <Routes>
       <Route path="/register" element={<Register />} />
@@ -23,9 +24,10 @@ function App() {
 
       </Routes>
      </Router>
+     </BrowserRouter>
      
-      <Navbar />
-      <Register />
+    
+   
 
     </div>
   );
