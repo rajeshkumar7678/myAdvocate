@@ -81,7 +81,7 @@ userRouter.post("/login",async (req,res)=>{
 
 userRouter.get("/getuser", async(req,res)=>{
     try {
-        let {_id}=req.query
+        
         let usertoken=await client.get('token');
         let decodedtoken=jwt.verify(usertoken,"rajesh")
         if(decodedtoken.role=="admin"){
@@ -97,6 +97,20 @@ userRouter.get("/getuser", async(req,res)=>{
     }
 })
 
+
+
+//userbyid==========================
+userRouter.get("/getdata", async(req,res)=>{
+    try {
+        let {_id}=req.query
+       
+        let user=await UserModel.findOne({_id})
+        res.send({"userdetails":user})
+        
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 
 //logout=================================
