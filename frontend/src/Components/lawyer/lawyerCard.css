@@ -31,7 +31,7 @@
   list-style:decimal;
 }
 
-.btn {
+.btn-lawyer{
   width: 30%;
   height: 50px;
   color: rgb(0, 0, 0);
@@ -39,7 +39,7 @@
   border-radius: 34px;
   background-color: #ffffff;
 }
-.btn:hover{
+.btn-lawyer:hover{
   color: rgb(255, 255, 255) ;
   background-color:rgb(0, 0, 0);
 

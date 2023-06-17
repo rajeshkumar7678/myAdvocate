@@ -34,7 +34,7 @@ const LawyerCard = ({ name, image, bio, profession, experience, address, skills,
       </div>
     
      
-      <Link to={`/form/${_id}`}> <button className="btn"> Book an Appointment</button> </Link>
+      <Link to={`/form/${_id}`}> <button className="btn-lawyer"> Book an Appointment</button> </Link>
        
     </div>
 
