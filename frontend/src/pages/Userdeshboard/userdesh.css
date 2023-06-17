@@ -1,0 +1,12 @@
+.deshmain{
+    padding: 30px;
+    text-align: center;
+    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+}
+
+.deshmain div{
+    border: 1px solid red;
+}

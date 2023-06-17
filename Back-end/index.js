@@ -3,6 +3,7 @@ require("dotenv").config()
 const cors=require("cors")
 const {connection}=require("./config/db")
 const { lawyerRouter } = require('./routes/lawyerroutes')
+const { userRouter } = require("./routes/userroutes")
 
 
 
@@ -18,6 +19,8 @@ app.get("/",(req,res)=>{
 })
 
 app.use('/lawyer', lawyerRouter)
+
+app.use("/users",userRouter)
 
 
 
