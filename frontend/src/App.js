@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Lawyers from './pages/lawyer/lawyer';
 import Form from './pages/Appointment/form';
 import Userdesh from './pages/Userdeshboard/userdesh';
+import Home from "./pages/home"
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
 {/* <BrowserRouter>  */}
 
      <Routes>
+     <Route path="/" element={<Home />} />
     <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login />} />
     <Route path="/lawyers" element={<Lawyers />} />
