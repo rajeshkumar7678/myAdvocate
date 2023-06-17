@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes,Route, BrowserRouter} from "react-router-dom";
 
 import Navbar from './Components/Navbar';
 
@@ -16,7 +16,8 @@ function App() {
   return (
     <div className="App">
 
-      
+
+
 
 {/* <BrowserRouter>  */}
 
@@ -35,6 +36,7 @@ function App() {
     <Register /> */}
 
   </div>
+
 
   );
 }
