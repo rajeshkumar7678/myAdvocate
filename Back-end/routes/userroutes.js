@@ -216,10 +216,6 @@ userRouter.get("/getdata", async(req,res)=>{
     }
 })
 
-
-
-
-
 module.exports={userRouter}
 
 

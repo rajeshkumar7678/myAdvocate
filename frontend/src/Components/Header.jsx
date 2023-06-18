@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -19,12 +20,12 @@ const Header = () => {
                 and more convenient than ever before.
               </p>
               <div className="button-div-redirect">
-              <button type="button" class="btn btn-outline-primary">
+              <Link to={`/lawyers`}> <button type="button" class="btn btn-outline-primary">
                 Book An Appointment
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
+              </button></Link>
+              <Link to={`/lawyers`}><button type="button" class="btn btn-outline-secondary">
                 Meet Our Lawyers
-              </button>
+              </button></Link>
               </div>
             </div>
             {/*  --------------- main header right side--------------  */}
