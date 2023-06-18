@@ -3,6 +3,7 @@ const { UserModel } = require('../models/usermodel')
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const {client} = require('../helpers/redis');
+const passport = require('passport');
 require("dotenv").config()
 
 
@@ -105,7 +106,7 @@ userRouter.get("/getdata", async(req,res)=>{
         let {_id}=req.query
        
         let user=await UserModel.findOne({_id})
-        res.send({"userdetails":user})
+        res.send(user)
         
     } catch (error) {
         console.log(error)
@@ -130,8 +131,90 @@ userRouter.get("/logout",async(req,res)=>{
 
 })
 
+//route for query==============================================
+userRouter.post("/getback", async (req,res)=>{
+    try {
+        let data=req.body
+        conformmail(data.Name,data.Email)
+        res.send("connect you shortly")
+    } catch (error) {
+        res.send("error.massage")
+    }
+})
+
+//sending mail===========================
+let conformmail=async(Name,Email)=>{
+    try {
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'mr.rajeshkumar7678@gmail.com',
+                pass: process.env.googlepassword
+            }
+        });
+
+        let mailOptions = {
+            from: 'mr.rajeshkumar7678@gmail.com',
+            to: Email,
+            subject: 'For verifecation mail',
+            html:`<p>hi ${Name} <br> our team will connect to you shortly </p>`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                
+            } else {
+                console.log('Email sent: ' + info.response);
+               
+            }
+        });
+    } catch (error) {
+        console.log(error)
+    }
+
+}
 
 
+//googleauth============================================================
+
+userRouter.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+userRouter.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' ,session:false}),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    console.log(req.user)
+    const user=req.user
+    let token=jwt.sign({id:user._id,verified:user.ismailverified,role:user.Role},process.env.secretkey,{expiresIn:"6hr"})
+    let refreshtoken=jwt.sign({id:user._id,verified:user.ismailverified,role:user.Role},process.env.secretkey,{expiresIn:"6d"})
+
+    client.set('token', token, 'EX', 3600);
+    client.set('refreshtoken', refreshtoken, 'EX', 3600);
+    res.send("done")
+    
+    // res.send(`<a href="http://127.0.0.1:5502/Front-End/index.html?userid=${user._id}" id="myid">Loding...🕧</a>
+    // <script>
+    //     let a = document.getElementById('myid')
+    //     a.click()
+    //     console.log(a)
+    // </script>`)
+
+
+});
+
+userRouter.get("/getdata", async(req,res)=>{
+    try {
+        let {_id}=req.query
+       
+        let user=await UserModel.findOne({_id})
+        res.send({"userdetails":user})
+        
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 module.exports={userRouter}
 

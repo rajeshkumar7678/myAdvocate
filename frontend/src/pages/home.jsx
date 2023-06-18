@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
-import Header from "../Components/header";
+import Header from "../Components/Header";
 import HowItWorks from "../Components/Howitworks";
 import Aboutus from "../Components/Aboutus";
 import Services from "../Components/Services";
-// import Contact from "./Contact";
-// import Footer from "./Footer";
+import Contact from "../Components/Contact";
+import Footer from "../Components/Footer";
 
 const Home = () => {
   return (
@@ -15,8 +15,8 @@ const Home = () => {
       <HowItWorks />
       <Aboutus />
       <Services />
-      {/* <Contact /> */}
-      {/* <Footer /> */}
+      <Contact />
+      <Footer />
     </>
   );
 };
