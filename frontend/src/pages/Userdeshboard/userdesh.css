@@ -3,10 +3,43 @@
     text-align: center;
     
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 40% 60%;
     gap: 20px;
 }
 
-.deshmain div{
-    border: 1px solid red;
+.raj-userdetails{
+    padding: 10px;
+    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.raj-userdetails > div{
+    width: 150px;
+    margin: auto;
+    border-radius: 50%;
+}
+.raj-userdetails > div>img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.raj-button{
+    margin: 30px;
+    width: 250px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgb(98, 98, 189);
+    color: white;
+}
+.raj-userdetails > button:hover{
+    background-color: transparent;
+    color: black;
+}
+
+.raj-userappointment{
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

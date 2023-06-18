@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     Password : { type : String, required : true },
    
     Role : { type : String, enum : ["User", "Lawyer"], required : true, default : "User" },
-    ismailverified:Boolean
+    Apointsment:[]
 
 }, {
     versionKey : false,

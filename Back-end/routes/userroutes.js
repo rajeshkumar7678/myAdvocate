@@ -105,7 +105,7 @@ userRouter.get("/getdata", async(req,res)=>{
         let {_id}=req.query
        
         let user=await UserModel.findOne({_id})
-        res.send({"userdetails":user})
+        res.send(user)
         
     } catch (error) {
         console.log(error)
@@ -129,6 +129,51 @@ userRouter.get("/logout",async(req,res)=>{
     }
 
 })
+
+
+//route for query==============================================
+userRouter.post("/getback", async (req,res)=>{
+    try {
+        let data=req.body
+        conformmail(data.Name,data.Email)
+        res.send("connect you shortly")
+    } catch (error) {
+        res.send("error.massage")
+    }
+})
+
+//sending mail===========================
+let conformmail=async(Name,Email)=>{
+    try {
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'mr.rajeshkumar7678@gmail.com',
+                pass: process.env.googlepassword
+            }
+        });
+
+        let mailOptions = {
+            from: 'mr.rajeshkumar7678@gmail.com',
+            to: Email,
+            subject: 'For verifecation mail',
+            html:`<p>hi ${Name} <br> our team will connect to you shortly </p>`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                
+            } else {
+                console.log('Email sent: ' + info.response);
+               
+            }
+        });
+    } catch (error) {
+        console.log(error)
+    }
+
+}
 
 
 
