@@ -1,9 +1,9 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import {BrowserRouter as Router, Routes,Route, BrowserRouter} from "react-router-dom";
+import { Routes,Route} from "react-router-dom";
 
-import Navbar from './Components/Navbar';
+// import Navbar from './Components/Navbar';
 
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -20,8 +20,8 @@ const App = () => {
 
 
 
-{/* <BrowserRouter>  */}
-
+{/* <BrowserRouter> 
+     <Router> */}
      <Routes>
      <Route path="/" element={<Home />} />
     <Route path="/register" element={<Register />} />
@@ -32,8 +32,9 @@ const App = () => {
 
 
     </Routes>
-  
-   {/* </BrowserRouter> */}
+    {/* </Router>
+   
+   </BrowserRouter> */}
     {/* <Navbar />
     <Register /> */}
 

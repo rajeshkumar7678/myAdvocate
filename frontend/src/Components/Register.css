@@ -1,25 +1,144 @@
-.main-div{
 
-    display: flex;
-    height: 600px;
-    width: 80%;
+.left-div{
+    border: 2px solid red;
+    width: 45%;
+    height: 700px;
+
+}
+.right-div{
+    /* border: 1px solid green; */
+    border: 1px solid grey;
+
+    width: 45%;
+    height: 700px;
+    padding: 10px;
+
+
+
+
+}
+
+.left-div >img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 2;
+}
+
+
+.signUpdiv{
+
+     border: 2px solid chartreuse;
+     height: 1084px;
+     display: flex;
+     padding-top: 30px;
+     padding-left: 50px;
+     padding-right: 50px;
+     
+}
+.signUpdiv >div{
+
     margin: auto;
-    justify-content: space-around;
-}
-
-.main-div> div{
-
-    width: 40%;
-    height: 600px;
-    border: 2px solid black;
-
-   
 }
 
 
+.Signupform {
+    /* padding: 200px; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 2px;
+    width: 100%;
+    background-color: #fff;
+    /* border: 1px solid grey; */
+    /* padding: 80px 50px 40px 50px; */
+  }
+  
+ 
+  .RegisterTitle {
+    text-align: center;
+    font-size: 2.7rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .line {
+    height: 1px;
+    flex: 1 1 0%;
+    background-color: rgba(55, 65, 81, 1);
+    color: white;
+  }
+  
+  .Signupform input {
+    margin: 2px 0px !important;
+    font-size: 12px;
+    width: 100%;
+    border: 2px solid rgb(207, 203, 203);
+    border-radius: 4px;
+    padding: 7px 10px;
+  }
+  .Signupform input:hover,
+  .Signupform input:focus {
+    outline: none !important;
+    border: 2px solid #0d6efd !important;
+    box-shadow: none !important;
+  }
+  
+  .sub {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    width: 100%;
+  }
 
-form{
-    margin-top: 30px;
+  .ContinueRegis {
+    background-color: #0d6efd !important;
+    width: 70%;
+    font-size: 19px;
+    border-radius: 9px;
+    border: none;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    padding: 10px 20px;
+  }
+  .ContinueRegis:hover {
+    background-color: lightblue !important;
+  }
+  .SignInSmol {
+    color: #20c997;
+  }
+  
+  .SocialIcons {
+    width: 100%;
+    margin-right:8px;
+  }
+  .SocialIcons > div {
+    margin: 5px;
+    cursor: pointer;
+    display: flex;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    padding: 6px 30px;
+    border-radius: 5px;
+    color: rgb(48, 47, 47);
+    border: 1px solid grey !important;
+    justify-content: center;
+    align-items: center;
+  }
+  .SocialIcons div:hover {
+    cursor: pointer;
+    border: 1px solid #20c997;
+  }
 
-}
+  fieldset{
+    width: 105%;
+
+  }
+
+
 
