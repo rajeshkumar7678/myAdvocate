@@ -1,5 +1,4 @@
 * {
-
   margin: 0;
 }
 
@@ -17,7 +16,7 @@
   grid-template-rows: auto auto auto auto;
   border: 1px solid #f1eded;
   padding: 1rem 2rem;
-  width: 80%;
+  width: 100%;
   background: #fcfcfc;
   margin-top: 2rem;
   border-radius: 7px;
@@ -32,7 +31,7 @@
   list-style:decimal;
 }
 
-.btn {
+.btn-lawyer{
   width: 30%;
   height: 50px;
   color: rgb(0, 0, 0);
@@ -40,7 +39,7 @@
   border-radius: 34px;
   background-color: #ffffff;
 }
-.btn:hover{
+.btn-lawyer:hover{
   color: rgb(255, 255, 255) ;
   background-color:rgb(0, 0, 0);
 
@@ -343,4 +342,3 @@ label:last-child span {
   /* display: none; */
 }
 }
-
