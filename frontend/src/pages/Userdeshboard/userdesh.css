@@ -43,3 +43,8 @@
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.raj-appointment-card{
+    border: 1px solid black;
+    margin: 10px auto;
+    border-radius: 20px;
+}

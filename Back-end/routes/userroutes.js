@@ -66,7 +66,7 @@ userRouter.post("/login",async (req,res)=>{
             return res.status(400).send({"msg":"incorrect password"})
         }
 
-        let token=jwt.sign({id:user._id,role:user.Role},"rajesh",{expiresIn:"6hr"})
+        let token=jwt.sign({id:user._id,role:user.Role},"rajesh",{expiresIn:"20min"})
         let refreshtoken=jwt.sign({id:user._id,role:user.Role},"rajesh",{expiresIn:"6d"})
 
         client.set('token', token, 'EX', 3600);
@@ -110,6 +110,18 @@ userRouter.get("/getdata", async(req,res)=>{
         
     } catch (error) {
         console.log(error)
+    }
+})
+
+userRouter.put("/update/:_id",async(req,res)=>{
+    try {
+        let {_id}=req.params
+        let user=await UserModel.findOne({_id})
+        user.Apointments.push(req.body)
+        await user.save()
+        res.send({"msg":"apointment added successfull",user})
+    } catch (error) {
+        res.send(error.massage)
     }
 })
 

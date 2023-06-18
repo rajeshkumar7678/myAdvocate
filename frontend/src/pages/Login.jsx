@@ -35,8 +35,14 @@ export default function LoginForm(props) {
       .then((data) => {
         console.log(data);
         alert(data.msg);
-        setFormData({ email: "", password: "" });
-        navigate("/"); // Redirect to the home page
+        if(data.userdetails){
+          localStorage.setItem('user', JSON.stringify(data.userdetails));
+          navigate("/userdesh",{ state: { user: data.userdetails } }); // Redirect to the home page
+        }else{
+          setFormData({ email: "", password: "" });
+        }
+        
+        
       })
       .catch((error) => {
         console.error(error);
