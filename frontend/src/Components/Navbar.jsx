@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
 
@@ -47,11 +48,11 @@ const Navbar = () => {
                 </li>
               </ul>
               <form class="d-flex">
-                <button class="btn  btn-style" type="submit">
+                {/* <button class="btn  btn-style" type="submit">
                   Sign Up
-                </button>
+                </button> */}
                 <button class="btn  btn-style btn-style-border" type="submit">
-                  Log in
+                  Sign in
                 </button>
               </form>
             </div>
