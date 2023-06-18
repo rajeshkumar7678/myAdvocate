@@ -196,7 +196,18 @@ header {
   top: -2%;
   box-shadow: 0.8rem 0 0.8rem rgba(0, 0, 0, 0.25);
 }
+@media (max-width: 995px) {
+  .main-herosection-images img {
+    display: none;
+  }
+}
 
+@media (max-width: 502px) {
+  .main-herosection-images img {
+    display: none;
+  }
+  
+}
 /* --------------------------------- Hero sEction  ends  
                         -------------------------------------------------------*/
 
@@ -250,7 +261,7 @@ header {
 }
 
 .our-services img {
-  width: 40%;
+  width: 90%;
   height: 75%;
   margin-top: 10rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.8rem 0.8rem;
@@ -369,6 +380,7 @@ header {
   min-width: 80%;
   max-height: 30rem;
   height: auto;
+  border-radius: 8px;
 }
 
 .contact-input-feild {
