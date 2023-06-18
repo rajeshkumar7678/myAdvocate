@@ -1,166 +1,99 @@
-import React from "react";
-import "../Components/Register.css"
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import HOST from "../Utils/baseURL";
-import imageFileName from '../images/home1.jpg';
+import "../Components/Login.css";
 
+export default function RegisterForm(props) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-const Register = () => {
-  // const navigate = useNavigate();
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Create an object using the form data
+    const user = {
+      Name: formData.name,
+      Email: formData.email,
+      Password: formData.password,
+    };
 
-  let [name, setName] = useState("");
-  let [email, setEmail] = useState("");
-  let [lawyer, setLawyer] = useState("");
-  let [user, setUser] = useState("");
-  let [password, setPassword] = useState("");
-
-  const signUp = async (data) => {
-    const response = await fetch(`${HOST}/users/register`, {
+    // Send the registration request to the backend
+    fetch("http://localhost:4500/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    const json = await response.json();
-    console.log(json);
-    
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the backend
+        console.log(data);
+        alert(data.msg);
+        // Reset the form
+        setFormData({ name: "", email: "", password: "" });
+        // Redirect to the login page
+        
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        console.error(error);
+      });
   };
 
-  const handleSubmit = () => {
-    let data = {
-      email,
-      password,
-      name,
-      user,
-      lawyer,
-    };
-    signUp(data);
-  };
   return (
-      
-    <div className="signUpdiv">
-     
-      {/* {contextHolder} */}
-      <div className="left-div">
-        <img  src={imageFileName} alt="acelogo" />
-      </div>
-      <div className="right-div">
-        <form
-          className="Signupform"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-        >
-          <h1 className="RegisterTitle">Register</h1>
-          <p style={{ color: "grey", fontSize: "13px" }}>
-             Signup to MyAdvocate
+    <div className="Auth-form-container">
+      <form className="Auth-form" onSubmit={handleSubmit}>
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Register</h3>
+          <div className="form-group mt-3">
+            <label>Name</label>
+            <input
+              value={formData.name}
+              onChange={handleInputChange}
+              type="text"
+              name="name"
+              className="form-control mt-1"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Email address</label>
+            <input
+              value={formData.email}
+              onChange={handleInputChange}
+              type="email"
+              name="email"
+              className="form-control mt-1"
+              placeholder="Enter email"
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input
+              value={formData.password}
+              onChange={handleInputChange}
+              type="password"
+              name="password"
+              className="form-control mt-1"
+              placeholder="Enter password"
+            />
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-primary">
+              Register
+            </button>
+          </div>
+          <p className="login-link text-center mt-2">
+            Already have an account? <Link to="/login">Log In</Link>
           </p>
-          <fieldset>
-            <legend>Enter user name</legend>
-          <input
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
-            type="text"
-            className="SignupUserName"
-            placeholder="&nbsp;&nbsp;Username"
-            required
-          />
-          </fieldset>
-        
-        
-        <fieldset>
-          <legend>Enter Your Email</legend>
-          <input
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
-            type="email"
-            className="SignupEmail"
-            placeholder="&nbsp;&nbsp;Email"
-            required
-          />
-          </fieldset>
-
-          <fieldset>
-            <legend>Enter Password</legend>
-          <input
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-            type="password"
-            className="SignupPass"
-            placeholder="&nbsp;&nbsp;Password"
-            required
-          />
-          </fieldset>
-
-
-<label htmlFor="user">User</label>
-        <input
-  onChange={(event) => {
-    setUser(event.target.value);
-  }}
-  type="radio"
-  name="userType"
-  value="user"
-  className="SignupUser"
-  required
-/>
-
-<label htmlFor="lawyer">Lawyer</label>
-
-<input
-  onChange={(event) => {
-    setLawyer(event.target.value);
-  }}
-  type="radio"
-  name="userType"
-  value="lawyer"
-  className="SignupLawyer"
-  required
-/>
-
-
-
-          <span className="alreadyacc">
-            Already have an account ?
-            <Link className="SignInSmol" to="/login">
-              &nbsp; Sign in
-            </Link>
-          </span>
-          <input
-            type="submit"
-            value="Continue"
-            style={{ cursor: "pointer", margin: "0" }}
-            className="ContinueRegis"
-          />
-
-          <div className="social-message">
-            <div className="line">-</div>
-            <p className="message">Login with social accounts</p>
-            <div className="line">-</div>
-          </div>
-          <div className="SocialIcons">
-            <div>
-              <img
-                style={{ width: "25px" }}
-                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-                alt="icon"
-              />
-              <label>Continue With Google</label>
-            </div>
-            
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
-};
-
-export default Register;
+}

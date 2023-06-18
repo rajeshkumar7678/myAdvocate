@@ -1,163 +1,89 @@
-import React from "react";
-import "../Components/Login.css"
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../Components/Login.css";
 
-// import  { useContext,  useState } from "react";
-import { Link} from "react-router-dom";
-// import HOST from "../Utils/baseURL";
+export default function LoginForm(props) {
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-const Login = () => {
-//   const { UserDetails, setUserDetails } = useContext(UserContext);
-//   const { Auth, setAuth } = useContext(AuthContext);
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      Email: formData.email,
+      Password: formData.password,
+    };
 
-//   const signIN = async (data) => {
-//     const response = await fetch(`${HOST}/user/login`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ email: data.email, password: data.password }),
-//     });
+    fetch("http://localhost:4500/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert(data.msg);
+        setFormData({ email: "", password: "" });
+        navigate("/"); // Redirect to the home page
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-//     // const Data = await response.json();
-//     // if (Data.status === "success") {
-//     //   localStorage.setItem("token", Data.token);
-//     //   setUserDetails(Data.userData);
-//     //   setAuth(true);
-//     //   setTimeout(() => {
-//     //     setAuth(true);
-//     //     console.log("Login Success");
-//     //     navigate("/userdesh");
-//     //   }, 1000);
-//     // } else {
-//     //   console.log("Invalid Credentials", "Enter valid account details.");
-//     // }
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     if (value === "User Email") {
-//       let data = {
-//         email,
-//         password,
-//       };
-//       signIN(data);
-//     } else if (value === "Lawyer ID") {
-//       console.log("Hello from lawyer");
-//     } else {
-//       if (email === "admin@gmail.com" && password === "admin") {
-//         // setAuth(true);
-//         // navigate("/admin");
-//       }
-//     }
-//   };
-  
   return (
-    <div className="form-container">
-      {/* {contextHolder} */}
-      <p className="logintitle">Login</p>
-      <div className="labeldiv">
-        <label
-        //   onClick={() => handleClick("User Email")}
-        //   style={{
-        //     backgroundColor: value !== "User Email" ? "#fafafa" : "#ffd41f",
-        //     border: "none",
-        //   }}
-        >
-          User
-        </label>
-        <label
-        //   onClick={() => handleClick("Lawyer ID")}
-        //   style={{
-        //     backgroundColor: value !== "Lawyer ID" ? "#fafafa" : "#ffd41f",
-        //     border: "none",
-        //   }}
-        >
-          Lawyer
-        </label>
-        <label
-        //   onClick={() => handleClick("Admin ID")}
-        //   style={{
-        //     backgroundColor: value !== "Admin ID" ? "#fafafa" : "#ffd41f",
-        //     border: "none",
-        //   }}
-        >
-          Admin
-        </label>
-      </div>
-      <div className="userpng">
-        <img src="" alt="" />
-      </div>
-      <div>
-        <form className="form" > 
-        
-          <div className="input-group">
-            <label htmlFor="username" className="fontweightfive">
-              {/* {value} */}
-            </label>
+    <div className="Auth-form-container">
+      <form className="Auth-form" onSubmit={handleSubmit}>
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Sign In</h3>
+          <div className="form-group mt-3">
+            <label>Email address</label>
             <input
-            //   onChange={(e) => setEmail(e.target.value)}
-              type="text"
-              name="username"
-              id="username"
-              placeholder="User Name"
-              required
+              value={formData.email}
+              onChange={handleInputChange}
+              type="email"
+              name="email"
+              className="form-control mt-1"
+              placeholder="Enter email"
             />
           </div>
-          <div className="input-group">
-            <label htmlFor="password" className="fontweightfive">
-              Password
-            </label>
+          <div className="form-group mt-3">
+            <label>Password</label>
             <input
-            //   onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleInputChange}
               type="password"
               name="password"
-              id="password"
-              placeholder="Password"
-              required
+              className="form-control mt-1"
+              placeholder="Enter password"
             />
-
-            <div className="forgot">
-              <div rel="noopener noreferrer" className="yellohover">
-                {/* <ForgotModal /> */}
-              </div>
-            </div>
           </div>
-          <button className="signInBtn" type="submit">
-            Sign in
-          </button>
-        </form>
-        <div className="social-message">
-          <div className="line"></div>
-          <p className="message">Login with social accounts</p>
-          <div className="line"></div>
-        </div>
-
-        <div className="SocialIcons">
-          <div>
-            <img
-              style={{ width: "30px" }}
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-              alt="icon"
-            />
-            <label>Google Login</label>
+          <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
           </div>
-          
+          <p className="forgot-password text-right mt-2">
+            Forgot <a href="#">password?</a>
+          </p>
+          <p className="signup-link text-center mt-2">
+            Don't have an account? <Link to="/register">Sign Up</Link>
+          </p>
         </div>
-        <p className="signup">
-          Don't have an account?
-          <Link to="/register" style={{ color: "teal" }}>
-            &nbsp; Sign up
-          </Link>
-        </p>
-      </div>
+      </form>
+      <ToastContainer />
     </div>
   );
-};
-
-export default Login;
-
-
-  
-
+}

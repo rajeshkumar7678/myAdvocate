@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  let name="login"
 
   return (
     <>
@@ -51,9 +52,9 @@ const Navbar = () => {
                 {/* <button class="btn  btn-style" type="submit">
                   Sign Up
                 </button> */}
-                <button class="btn  btn-style btn-style-border" type="submit">
-                  Sign in
-                </button>
+                <Link to={`/login`}> <button class="btn  btn-style btn-style-border" type="submit">
+                  {name}
+                 </button></Link>
               </form>
             </div>
           </div>
