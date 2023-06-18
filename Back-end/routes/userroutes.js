@@ -106,7 +106,7 @@ userRouter.get("/getdata", async(req,res)=>{
         let {_id}=req.query
        
         let user=await UserModel.findOne({_id})
-        res.send({"userdetails":user})
+        res.send(user)
         
     } catch (error) {
         console.log(error)
@@ -215,6 +215,7 @@ userRouter.get("/getdata", async(req,res)=>{
         console.log(error)
     }
 })
+
 
 
 
