@@ -42,11 +42,13 @@ lawyerRouter.patch('/update/:id', async (req, res) => {
 })
 
 // D -> Delete
-lawyerRouter.delete('/delete/:id', async (req, res) => {
-    const id = req.params.id;
-    await LawyerModel.findByIdAndDelete({ _id: id })
-    res.send({ 'msg': `Product with id: ${id} has been deleted` })
+lawyerRouter.delete('/delete/:_id', async (req, res) => {
+    const id = req.params._id;
+    await LawyerModel.findByIdAndDelete({ _id })
+    res.send({ 'msg': `Product with id: ${_id} has been deleted` })
 })
+
+
 
 module.exports = { lawyerRouter }
 

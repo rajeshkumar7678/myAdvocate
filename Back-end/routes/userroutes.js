@@ -12,8 +12,15 @@ require("dotenv").config()
 const userRouter=express.Router()
 
 
-userRouter.get("/",(req,res)=>{
-    res.send("user routes")
+userRouter.get("/allusers",async(req,res)=>{
+    // res.send("user routes")
+    try {
+        const data =await UserModel.find()
+        // console.log(data)
+        res.status(200).json({msg:data})
+    } catch (error) {
+        res.status(400).send({msg:error.message})
+    }
 })
 
 //register====================================
@@ -31,6 +38,34 @@ userRouter.post("/register", async(req,res)=>{
         let hashpasswod= bcrypt.hashSync(Password,6)
 
         let newuser= new UserModel({Name,Email,Password:hashpasswod,Role:"User"})
+        
+        let dbnewuser=await newuser.save()
+
+        console.log(dbnewuser)
+        
+       
+        res.status(200).send({"msg":"User registered successfully."})
+
+
+    } catch (error) {
+        res.status(400).send(error)
+        console.log(error)
+    }
+})
+
+userRouter.post("/admin/register", async(req,res)=>{
+    try {
+        let {Name,Email,Password,Role}=req.body
+        let user=await UserModel.findOne({Email})
+        console.log(user)
+
+        if(user){
+            return res.status(400).send({"msg":"already exist please login"})
+        }
+
+        let hashpasswod= bcrypt.hashSync(Password,6)
+
+        let newuser= new UserModel({Name,Email,Password:hashpasswod,Role})
         
         let dbnewuser=await newuser.save()
 
@@ -213,6 +248,29 @@ userRouter.get("/getdata", async(req,res)=>{
         
     } catch (error) {
         console.log(error)
+    }
+})
+
+userRouter.delete("/delete/:_id",async(req,res)=>{
+    try {
+        const {_id} = req.params
+        await UserModel.findByIdAndDelete(_id)
+        res.status(200).status({"msg":"User has been Deleted"})
+    } catch (error) {
+        res.status(401).send({"msg":error.message})
+    }
+})
+userRouter.patch("/update/:_id",async(req,res)=>{
+    try {
+        const {_id} = req.params
+        const {Name,Role,Email} = req.body
+        await UserModel.findByIdAndUpdate(_id,{
+             Name,Role,Email
+        })
+        console.log("Ok")
+        res.status(200).status({"msg":"User has been Updated"})
+    } catch (error) {
+        res.status(401).send({"msg":error.message})
     }
 })
 
