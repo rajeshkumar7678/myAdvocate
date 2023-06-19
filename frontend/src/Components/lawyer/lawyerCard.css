@@ -335,7 +335,7 @@ label:last-child span {
 
 
 @media (max-width:800px) {
-.card{
+.cardcars{
   height: auto ;
   width: 500px;
   margin-right: 70px;
