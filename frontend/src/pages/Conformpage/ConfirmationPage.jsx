@@ -3,8 +3,27 @@ import './ConfirmationPage.css'; // Import the CSS file for styling
 import { Link } from 'react-router-dom';
 
 const ConfirmationPage = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-
+  // let user;
+  const localUser = JSON.parse(localStorage.getItem('user'));
+  fetch(`http://localhost:4500/users/getdata/?_id=${localUser._id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response from the backend
+      // console.log(data.Apointments);
+      // user = data;
+      localStorage.setItem("userdata",JSON.stringify(data));
+      // alert(data.msg);
+      // // Reset the form
+      // setFormData({ name: "", email: "", password: "" });
+      // Redirect to the login page
+      
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the request
+      console.error(error);
+    });
+    const user = JSON.parse(localStorage.getItem('userdata'));
+    console.log(user)
   return (
     <div className="confirmation-container">
       <h2 className="confirmation-title">Appointment Confirmation</h2>

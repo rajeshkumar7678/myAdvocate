@@ -12,10 +12,31 @@ function Userdesh() {
   const [name,setname]=useState("")
   const [email,setemail]=useState("")
   const loginuser = JSON.parse(localStorage.getItem('user'));
-  
-  
-  let apoint=loginuser.Apointments
-  console.log(apoint)
+  // console.log(loginuser);
+   
+    fetch(`http://localhost:4500/users/getdata/?_id=${loginuser._id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response from the backend
+      // console.log(data.Apointments);
+      // user = data;
+      localStorage.setItem("userdata",JSON.stringify(data));
+      console.log("data aa rha h",data)
+      // alert(data.msg);
+      // // Reset the form
+      // setFormData({ name: "", email: "", password: "" });
+      // Redirect to the login page
+      
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the request
+      console.error(error);
+    });
+   
+   const loginuser1 = JSON.parse(localStorage.getItem('userdata'));
+  let apoint=loginuser1.Apointments
+  // console.log(loginuser1)
+  // console.log(apoint)
   
   return (
     <div>
@@ -33,7 +54,11 @@ function Userdesh() {
         </div>
         <div>
           <h1>Your Appointments</h1>
-          {apoint.map(appointment => (
+          {
+            apoint.length<=0 ? <h1>No Appointment Booked Yet</h1> :
+          
+          (apoint.map(appointment => (
+            
             <AppointmentCard
               key={appointment.id}
               advName={appointment.adv_name}
@@ -42,7 +67,9 @@ function Userdesh() {
               meetingDate={appointment.Date}
               caseSummary={appointment.CaseSummary}
             />
-          ))}
+          )))}
+
+
         </div>
       </div>
     </div>
