@@ -30,7 +30,7 @@ const Form = () => {
       }
     };
     fetchImage();
-  }, []);
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -90,7 +90,7 @@ const Form = () => {
     <div className="main-form">
       <div>
         {imageUrl ? (
-          <img src={imageUrl} alt="Image" />
+          <image src={imageUrl} alt="Image" />
         ) : (
           <h1>Loading...</h1>
         )}

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -82,7 +82,8 @@ export default function LoginForm(props) {
             </button>
           </div>
           <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
+            Forgot
+            <Link to={"#"}>password?</Link>
           </p>
           <p className="signup-link text-center mt-2">
             Don't have an account? <Link to="/register">Sign Up</Link>

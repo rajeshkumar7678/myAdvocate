@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar'
 import "./userdesh.css"
@@ -66,6 +67,7 @@ function Userdesh() {
               meetingTime={appointment.Time}
               meetingDate={appointment.Date}
               caseSummary={appointment.CaseSummary}
+              name={loginuser.Name}
             />
           )))}
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import "./LawyerCard";
 const SearchBar = ({ query, setQuery, setOption }) => {
 

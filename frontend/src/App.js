@@ -12,7 +12,7 @@ import Form from './pages/Appointment/form';
 import Userdesh from './pages/Userdeshboard/userdesh';
 import Home from "./pages/home"
 import ConfirmationPage from './pages/Conformpage/ConfirmationPage';
-
+import Chat from './pages/ChatBox/Chat';
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
     <Route path="/form/:id" element={<Form />} />
     <Route path="/userdesh" element={<Userdesh />} />
     <Route path="/confornpage" element={<ConfirmationPage />} />
-
+    <Route path="/chatbox/:UserName/:LawyerName" element={<Chat />} />
 
     </Routes>
     {/* </Router>
