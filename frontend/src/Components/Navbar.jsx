@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+
   const [show, setShow] = useState(false);
-  let name="login"
+  const user = location.state?.user || null;
+  
+  
 
   return (
     <>
@@ -51,10 +56,14 @@ const Navbar = () => {
               <form class="d-flex">
                 {/* <button class="btn  btn-style" type="submit">
                   Sign Up
-                </button> */}
-                <Link to={`/login`}> <button class="btn  btn-style btn-style-border" type="submit">
-                  {name}
-                 </button></Link>
+                </button>
+                 */}
+
+                 
+                {<p style={{ color: "blue", fontSize: "20px", fontWeight: "bold" }}>
+        {user ? user.Name :(<Link to={`/login`} style={{ color: "blue", fontSize: "20px", fontWeight: "bold" }}>login</Link>)}
+      </p>}
+                
               </form>
             </div>
           </div>

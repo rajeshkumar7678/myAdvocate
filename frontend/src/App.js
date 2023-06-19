@@ -11,6 +11,7 @@ import Lawyers from './pages/lawyer/lawyer';
 import Form from './pages/Appointment/form';
 import Userdesh from './pages/Userdeshboard/userdesh';
 import Home from "./pages/home"
+import ConfirmationPage from './pages/Conformpage/ConfirmationPage';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
     <Route path="/lawyers" element={<Lawyers />} />
     <Route path="/form/:id" element={<Form />} />
     <Route path="/userdesh" element={<Userdesh />} />
+    <Route path="/confornpage" element={<ConfirmationPage />} />
 
 
     </Routes>

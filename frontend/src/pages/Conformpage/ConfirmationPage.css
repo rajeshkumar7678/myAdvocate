@@ -1,0 +1,70 @@
+.confirmation-container {
+    width: 50%;
+    margin: 8% auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .confirmation-container {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .confirmation-container {
+      width: 90%;
+      padding: 10px;
+    }
+  }
+  
+    
+  
+  .confirmation-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-details {
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .confirmation-info {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .confirmation-message {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .confirmation-button:hover {
+    background-color: #0056b3;
+  }
+  
