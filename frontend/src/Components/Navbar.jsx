@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
+
 
 const Navbar = () => {
-  const location = useLocation();
+
+  
 
   const [show, setShow] = useState(false);
-  const user = location.state?.user || null;
+  const user = JSON.parse(localStorage.getItem('user'));
   
   
 
