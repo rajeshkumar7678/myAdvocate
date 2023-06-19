@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./userdesh.css"
 const AppointmentCard = ({ advName, profession, meetingTime, meetingDate, caseSummary }) => {
   return (
     <div className="raj-appointment-card">
