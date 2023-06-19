@@ -106,7 +106,7 @@ userRouter.post("/login",async (req,res)=>{
 
         client.set('token', token, 'EX', 3600);
         client.set('refreshtoken', refreshtoken, 'EX', 3600);
-
+         console.log("ok")
         res.status(200).send({"msg":"Login sucessfull","userdetails":user})
 
     } catch (error) {
