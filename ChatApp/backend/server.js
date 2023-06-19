@@ -47,6 +47,7 @@ const Message = mongoose.model('Message', {
           { sender: receiver, receiver: sender },
         ],
       });
+      console.log(messages)
       res.json(messages);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch messages' });
