@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import "./UpdateUsersComponents.css";
 
 const UserDataComponent = () => {
   const [users, setUsers] = useState([]);
@@ -6,6 +10,7 @@ const UserDataComponent = () => {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [Role, setRole] = useState("");
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     fetchUsers();
@@ -13,9 +18,8 @@ const UserDataComponent = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:4500/users/allusers");
-      const data = await response.json();
-      setUsers(data.msg);
+      const response = await axios.get("http://localhost:4500/users/allusers");
+      setUsers(response.data.msg);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -30,30 +34,24 @@ const UserDataComponent = () => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
-
+console.log(selectedUser._id)
     try {
-      const response = await fetch(
-        `http://localhost:4500/users/update/${selectedUser._id}`,
+      const response = await axios.patch(
+        `http://localhost:4500/users/UpdateUser/${selectedUser._id}`,
         {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "applicationjson",
-          },
-          body: JSON.stringify({
-            Name,
-            Email,
-            Role,
-          }),
+          Name,
+          Email,
+          Role,
         }
       );
-
-      if (response.ok) {
-        // User successfully updated, handle the response accordingly
-        console.log("Data Updated into DB");
+     console.log(response.json())
+      if (response.status === 200) {
+        MySwal.fire(<p>Data Updated into DB</p>);
         setSelectedUser(null);
         setName("");
         setEmail("");
         setRole("");
+        fetchUsers();
       } else {
         console.error("Failed to update user");
       }

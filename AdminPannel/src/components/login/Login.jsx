@@ -33,7 +33,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         alert(data.msg);
-        if(data.userdetails){
+        if(data.userdetails.role==="Admin"){
          
           localStorage.setItem('user', JSON.stringify(data.userdetails));
           navigate("/",{ state: { user: data.userdetails } })// Redirect to the home page

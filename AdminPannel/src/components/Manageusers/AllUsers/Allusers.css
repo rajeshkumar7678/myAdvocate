@@ -1,55 +1,49 @@
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .users-table {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    border-collapse: collapse;
-  }
-  
-  .users-table th,
-  .users-table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  .users-table th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-  }
-  
-  
-  
-  
-  @media (max-width: 768px) {
-    .users-table {
-      max-width: 100%;
-    }
-    
-    .users-table th,
-    .users-table td {
-      padding: 8px;
-    }
-  
-    .users-table th {
-      font-size: 14px;
-    }
-  
-    
-  }
-  
-  @media (max-width: 480px) {
-    .users-table th,
-    .users-table td {
-      padding: 6px;
-      font-size: 12px;
-    }
-  
-    
-  }
-  
+.fcAcontainer {
+  margin: 20px;
+}
+
+.Ausers-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.Ausers-table th,
+.Ausers-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.Ausers-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.Asearch-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Asearch-bar input[type='text'] {
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 21px;
+  border: px solid #ccc;
+  font-size: 14px;
+}
+
+.Asearch-bar select {
+  padding: 8px;
+  border-radius: 78px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.Asearch-bar select option {
+  font-size: 14px;
+  border-radius: 78px;
+  border: 1px solid #ccc;
+}
+

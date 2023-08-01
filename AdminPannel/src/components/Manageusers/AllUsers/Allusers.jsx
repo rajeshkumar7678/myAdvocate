@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Allusers.css';
 
 const Allusers = () => {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [roleFilter, setRoleFilter] = useState('');
+
   useEffect(() => {
     // Fetch the registered users data from the API
     fetch('http://localhost:4500/users/allusers')
@@ -17,12 +20,40 @@ const Allusers = () => {
       });
   }, []);
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
+  const handleRoleFilter = (event) => {
+    setRoleFilter(event.target.value);
+  };
+
+  const filteredUsers = users.filter((user) => {
+    // Apply search query and role filter
+    return (
+      user.Name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (roleFilter === '' || user.Role === roleFilter)
+    );
+  });
 
   return (
-    <div className="form-container">
+    <div className="fcAcontainer">
+      <div className="Asearch-bar">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        <select value={roleFilter} onChange={handleRoleFilter}>
+          <option value="">All</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Lawyer">Lawyer</option>
+        </select>
+      </div>
 
-      <table className="users-table">
+      <table className="Ausers-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -31,7 +62,7 @@ const Allusers = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <tr key={user._id}>
               <td>{user.Name}</td>
               <td>{user.Email}</td>

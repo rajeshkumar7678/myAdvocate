@@ -6,11 +6,12 @@ import DashboardPage from "./components/Dashboard/Dashboard"
 import { Addusers } from "./components/Manageusers/Addusers";
 import { Deletelawyer } from "./components/Manageusers/Deletelawyer";
 import { UpdateusersDetails } from "./components/Manageusers/UpdateusersDetails";
-import { Deleteuser } from "./components/Manageusers/DeleteUser";
 import { getusers } from "./components/Manageusers/getAllUsers";
 import { Addlawyer } from "./components/Manageusers/Addlawyer";
 import { NavLinks } from "./components/navbar/navLinks";
 import { MobileNavLinks } from "./components/navbar/mobileNavLinks";
+import { Deleteuser } from "./components/Manageusers/DeleteUser";
+
 
 function App() {
   return (
