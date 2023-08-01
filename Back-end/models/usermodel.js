@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
     Email : { type : String, required : true, unique : true },
     Password : { type : String, required : true },
    
-    Role : { type : String, enum : ["User", "Lawyer"], required : true, default : "User" },
+    Role : { type : String, enum : ["User", "Admin" ,"Lawyer"], required : true, default : "User" },
     Apointments:[]
 
 }, {
