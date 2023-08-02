@@ -286,6 +286,19 @@ userRouter.patch("/update/:_id",async(req,res)=>{
     }
 })
 
+userRouter.get('/users/search', async (req, res) => {
+    const { query } = req.query;
+  
+    try {
+      // Find users whose name matches the search query
+      const users = await UserModel.find({ Name: { $regex: query, $options: 'i' } });
+      res.json(users);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
+
 module.exports={userRouter}
 
 
